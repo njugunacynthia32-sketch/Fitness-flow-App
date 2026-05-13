@@ -1,4 +1,7 @@
+import WorkoutPlanner from '../workouts.jsx'
+
 function Workouts() {
-    return <h1>Workouts Page</h1>
+  return <WorkoutPlanner />
 }
+
 export default Workouts

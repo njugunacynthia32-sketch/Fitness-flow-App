@@ -1,21 +1,27 @@
+# Fitness Flow App
 
-# React + Vite
+A small React + Vite workout planner.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What it does
 
-Currently, two official plugins are available:
+- Shows a short list of exercises.
+- Filters exercises by search text and muscle group.
+- Adds or removes exercises from today's plan.
+- Shows the total number of exercises and workout minutes.
+- Starts a simple workout timer page for the selected plan.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Main files
 
-## React Compiler
+- `src/App.jsx` only sets up the routes.
+- `src/workouts.jsx` has the workout page state.
+- `src/workoutSession.jsx` has the timer page.
+- `src/components/` has the smaller workout components.
+- `src/workout.js` stores the exercise data.
+- `src/App.css` styles the page.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run the project
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Fitness-flow-App
-A Fitness planner that tracks weekly workouts for users.
-
-
+```bash
+npm install
+npm run dev
+```
