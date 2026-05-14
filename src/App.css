@@ -599,4 +599,39 @@ button:disabled {
   color: #ffffff;
 }
 
+.small-heading {
+  color: #2f7d55;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.plan-stats {
+  margin: 14px 0;
+  color: #334e68;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;;
+}
+
+.workout-progress {
+  color: #152238;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.workout-plan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+}
+
 
