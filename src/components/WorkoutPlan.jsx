@@ -1,8 +1,15 @@
-function planorPlans(exercises) {
-    if (exercises.length === 0) return ['Your plan is empty.']
-    if (exercises.length === 1) return ['Your plan']
-    if (exercises.length !==1) return ['Your plans']
-  }
+const today = new Date().toLocaleDateString('en-US', {
+  day: 'numeric',
+  month: 'long',
+  weekday: 'long',
+  year: 'numeric',
+})
+
+function getPlanTitle(exercises) {
+  if (exercises.length === 0) return 'Your plan is empty.'
+  if (exercises.length === 1) return 'Your plan'
+  return 'Your plans'
+}
 
 function WorkoutPlan({
   exercises,
@@ -10,10 +17,21 @@ function WorkoutPlan({
   onStartWorkout,
   totalMinutes,
 }) {
+  function removeExercise(exercise) {
+    const shouldRemove = window.confirm(
+      `Removing ${exercise.name} from your plan.`,
+    )
+
+    if (shouldRemove) {
+      onRemoveExercise(exercise.id)
+    }
+  }
+
   return (
     <aside className="plan-box">
       <p className="small-heading">Today</p>
-      <h1 className="small-heading1">{planorPlans(exercises)}</h1>
+      <h1 className="small-heading">{today}</h1>
+      <h1 className="small-heading1">{getPlanTitle(exercises)}</h1>
 
       <div className="plan-stats">
         <span>{exercises.length} exercises</span>
@@ -31,14 +49,8 @@ function WorkoutPlan({
                   <strong>{exercise.name}</strong>
                   <span>{exercise.minutes} min</span>
                 </div>
-                <button
-                  onClick={() =>
-                    window.confirm(
-                      `Removing ${exercise.name} from your plan.`,
-                    ) && onRemoveExercise(exercise.id)
-                  }
-                  type="button"
-                >
+
+                <button onClick={() => removeExercise(exercise)} type="button">
                   Remove
                 </button>
               </li>
