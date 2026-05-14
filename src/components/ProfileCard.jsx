@@ -1,6 +1,6 @@
 function ProfileCard({ profile }) {
   return (
-    <div>
+    <div className="profile-card">
       <h2>User Info</h2>
       <p>Name: {profile.name}</p>
       <p>Age: {profile.age}</p>
