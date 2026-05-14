@@ -6,6 +6,8 @@ import Progress from './pages/Progress.jsx'
 import Workouts from './pages/Workouts.jsx'
 import WorkoutSession from './workoutSession.jsx'
 
+import './App.css'
+
 function App() {
   return (
     <BrowserRouter>

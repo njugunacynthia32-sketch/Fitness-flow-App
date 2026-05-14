@@ -1,6 +1,10 @@
 # Fitness Flow App
 
+<<<<<<< HEAD
+A small React + Vite workout planner.
+=======
 A small workout planner.
+>>>>>>> 4ebc9e1db2901682badca1d9886bfa12a3f6ee93
 
 ## What it does
 
