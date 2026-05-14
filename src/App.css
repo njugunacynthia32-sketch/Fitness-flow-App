@@ -561,6 +561,14 @@ button:disabled {
   text-align: center;
 }
 
+.profile-message {
+  width: min(100%, 520px);
+  margin: 16px auto 0;
+  color: #2f7d55;
+  font-weight: 700;
+  text-align: center;
+}
+
 .profile-card h2 {
   margin: 0 0 16px;
   color: #152238;
@@ -571,3 +579,24 @@ button:disabled {
   color: #334e68;
   font-weight: 600;
 }
+
+.profile-card button {
+  width: 100%;
+  max-width: 220px;
+  min-height: 40px;
+  margin-top: 14px;
+  border: 1px solid #2f7d55;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #2f7d55;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-card button:hover {
+  background: #2f7d55;
+  color: #ffffff;
+}
+
+

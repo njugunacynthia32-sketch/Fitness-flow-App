@@ -1,4 +1,4 @@
-function ProfileCard({ profile }) {
+function ProfileCard({ profile, handleEdit }) {
   return (
     <div className="profile-card">
       <h2>User Info</h2>
@@ -7,6 +7,7 @@ function ProfileCard({ profile }) {
       <p>Height: {profile.height} cm</p>
       <p>Weight: {profile.weight} kg</p>
       <p>Goal: {profile.goal}</p>
+      <button type="button" onClick={handleEdit}>Edit</button>
     </div>
   );
 }
