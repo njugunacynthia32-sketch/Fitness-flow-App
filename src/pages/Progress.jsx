@@ -27,7 +27,7 @@ function Progress() {
     <main className="progress-page">
       <section className="progress-card">
         <p className="small-heading">Progress</p>
-        <h1>Your Workout Progress</h1>
+        <h1 className='workout-progress'>Here is Your Workout Progress:</h1>
 
         <div className="plan-stats">
           <span>{workoutPlan.length} exercises</span>
@@ -42,7 +42,8 @@ function Progress() {
           <ul className="plan-list">
             {workoutPlan.map((exercise) => (
               <li key={exercise.id}>
-                <div>
+                <div className="workout-plan">
+                  <h1 className='workout-plan-title'>Workout plan</h1>
                   <strong>{exercise.name}</strong>
                   <span>{exercise.minutes} min</span>
                 </div>

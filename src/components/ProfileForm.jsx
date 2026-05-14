@@ -1,7 +1,7 @@
  function ProfileForm({ profile, handleChange, handleSave }) {
     return (
-        <form onSubmit={handleSave}>
-            <label>
+        <form onSubmit={handleSave} className="profile-form">
+            <label className="name">
                 Name:
                 <input
                     type="text"
@@ -10,7 +10,7 @@
                     onChange={handleChange}
                 />
             </label>
-            <label>
+            <label className="age">
                 Age:
                 <input
                     type="number"
@@ -19,7 +19,7 @@
                     onChange={handleChange}
                 />
             </label>
-            <label>
+            <label className="height">
                 Height:
                 <input
                     type="number"
@@ -28,7 +28,7 @@
                     onChange={handleChange}
                 />
             </label>
-            <label>
+            <label className="weight">
                 Weight:
                 <input
                     type="number"
@@ -37,7 +37,7 @@
                     onChange={handleChange}
                 />
             </label>
-            <label>
+            <label className="goal">
                 Goal:
                 <input
                     type="text"
