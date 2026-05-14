@@ -146,7 +146,7 @@ function WorkoutSession() {
           </div>
           <div>
             <span>Next</span>
-            <strong>{nextExercise ? nextExercise.name : 'Done'}</strong>
+            <strong>{nextExercise ? nextExercise.name : 'Nothing here :)'}</strong>
           </div>
         </div>
 
