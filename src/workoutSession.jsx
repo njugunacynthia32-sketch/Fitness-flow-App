@@ -40,24 +40,24 @@ function WorkoutSession() {
     if (!isRunning || !currentExercise) return
 
     const timer = setInterval(() => {
-      setSecondsLeft((currentSeconds) => {
-        if (currentSeconds > 1) {
-          return currentSeconds - 1
-        }
+      if (secondsLeft > 1) {
+        setSecondsLeft(secondsLeft - 1)
+        return
+      }
 
-        if (currentIndex < plan.length - 1) {
-          const nextIndex = currentIndex + 1
-          setCurrentIndex(nextIndex)
-          return plan[nextIndex].minutes * 60
-        }
+      if (currentIndex < plan.length - 1) {
+        const nextIndex = currentIndex + 1
+        setCurrentIndex(nextIndex)
+        setSecondsLeft(plan[nextIndex].minutes * 60)
+        return
+      }
 
-        setIsRunning(false)
-        return 0
-      })
+      setIsRunning(false)
+      setSecondsLeft(0)
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [currentExercise, currentIndex, isRunning, plan])
+  }, [currentExercise, currentIndex, isRunning, plan, secondsLeft])
 
   function moveToExercise(index) {
     const exercise = plan[index]
@@ -146,7 +146,7 @@ function WorkoutSession() {
           </div>
           <div>
             <span>Next</span>
-            <strong>{nextExercise ? nextExercise.name : 'Nothing here :)'}</strong>
+            <strong>{nextExercise ? nextExercise.name : 'None'}</strong>
           </div>
         </div>
 

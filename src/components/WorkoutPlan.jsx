@@ -1,30 +1,38 @@
-const currentDate = new Date()
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-  const formattedDate = currentDate.toLocaleDateString('en-US', options)
-  const currentDay = currentDate.getDay()
-  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-  const dayOfWeek = daysOfWeek[currentDay]
+const today = new Date().toLocaleDateString('en-US', {
+  day: 'numeric',
+  month: 'long',
+  weekday: 'long',
+  year: 'numeric',
+})
 
-function planorPlans(exercises) {
-    if (exercises.length === 0) return ['Your plan is empty.']
-    if (exercises.length === 1) return ['Your plan']
-    if (exercises.length !==1) return ['Your plans']
-  }
+function getPlanTitle(exercises) {
+  if (exercises.length === 0) return 'Your plan is empty.'
+  if (exercises.length === 1) return 'Your plan'
+  return 'Your plans'
+}
 
 function WorkoutPlan({
   exercises,
   onRemoveExercise,
   onStartWorkout,
   totalMinutes,
-
-  
-
 }) {
+  function removeExercise(exercise) {
+    const shouldRemove = window.confirm(
+      `Removing ${exercise.name} from your plan.`,
+    )
+
+    if (shouldRemove) {
+      onRemoveExercise(exercise.id)
+    }
+  }
+
   return (
     <aside className="plan-box">
       <p className="small-heading">Today</p>
-      <h1 className="small-heading">{dayOfWeek}, {formattedDate}</h1>
-      <h1 className="small-heading1">{planorPlans(exercises)}</h1>
+      <h1 className="small-heading">{today}</h1>
+      <h1 className="small-heading1">{getPlanTitle(exercises)}</h1>
+
       <div className="plan-stats">
         <span>{exercises.length} exercises</span>
         <span>{totalMinutes} minutes</span>
@@ -41,14 +49,8 @@ function WorkoutPlan({
                   <strong>{exercise.name}</strong>
                   <span>{exercise.minutes} min</span>
                 </div>
-                <button
-                  onClick={() =>
-                    window.confirm(
-                      `Removing ${exercise.name} from your plan.`,
-                    ) && onRemoveExercise(exercise.id)
-                  }
-                  type="button"
-                >
+
+                <button onClick={() => removeExercise(exercise)} type="button">
                   Remove
                 </button>
               </li>
