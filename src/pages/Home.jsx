@@ -5,6 +5,7 @@ function Home() {
     return (
         <div className="home-container">
             <h1 className="welcome-title">Welcome to Fitness Flow app!</h1>
+            <p className="instructions">Use the navigation bar to access different sections of the app.</p>
            
         <div className="workout-container">
          
@@ -26,19 +27,21 @@ function Home() {
           <p> Complete 30 Minutes Exercise</p>
           <p> Eat Healthy Meals</p>
           <p> Sleep for a minimum of 8 Hours</p>
-          <p>Check out your progress by clicking on the "Progress" link in the navigation bar.</p>
+          <Link to="/progress">
+            <button className="view-progress-button">View Progress</button>
+          </Link>
         </div>  
 
         <div className="motivation-card">
           <h2>Motivation</h2>
 
-          <p>
-            “The body achieves what the mind believes.”
-          </p>
-
-          <p>
-            Stay consistent and trust your progress.
-          </p>
+          <p> “The body achieves what the mind believes.” </p>
+          <p> Stay consistent and trust your progress.</p>
+          <p>NEVER GIVE UP NO MATTER HOW DIFFICULT IT MAY SEEM! STAY STRONG!</p>
+          <Link to="/profile">
+            <button className="view-profile-button">View Profile</button>
+          </Link>
+      
         </div>
         
 
@@ -52,7 +55,6 @@ function Home() {
                     <li>Warm up before exercising and cool down afterwards.</li>
                     <li>Focus on proper form to prevent injuries.</li>
                     <li>Incorporate a variety of exercises to target different muscle groups.</li>
-                    <li>Set realistic goals and track your progress.</li>
                     <li>Get enough sleep to aid in recovery.</li>
                     <li>Fuel your body with a balanced diet to support your fitness goals.</li>
                 </ol>
