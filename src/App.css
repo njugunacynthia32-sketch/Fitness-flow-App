@@ -432,9 +432,7 @@ button:disabled {
   max-width: 760px;
   margin: 0 auto;
   padding: 32px 18px;
-  font-size: medium;
-  box-shadow: 0 1px 10px rgba(0, 7, 17, 0.968);
-  border-radius: 10px;
+
 }
 
 .start-workout-button {
@@ -447,3 +445,45 @@ button:disabled {
   cursor: pointer;
 }
 
+.Pro-tips,
+.welcome-section,
+.daily-goals,
+.motivation-card {
+  color: #627d98;
+  margin-top: 20px;
+  font-weight: 700;
+  box-shadow: 0 1px 10px rgba(0, 7, 17, 0.968);
+  border-radius: 10px;
+  padding: 13px;
+  width: 47%;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.workout-container {
+  background: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.welcome-title {
+  color: #0d7507;
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  padding: 18px;
+  display : flex;
+  justify-content: center;
+}
+
+.start-workout-button {
+  width: 100%;
+  margin-top: 16px;
+  font-size: 20px;
+} 
