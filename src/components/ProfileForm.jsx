@@ -50,3 +50,5 @@
         </form>
     );
 }
+
+export default ProfileForm;
