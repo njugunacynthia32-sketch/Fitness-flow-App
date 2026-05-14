@@ -27,7 +27,7 @@ function Profile() {
         event.preventDefault();
 
         fetch("http://localhost:3000/profile", {
-            methof: "PATCH",
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
