@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const quoteApiUrl = 'https://dummyjson.com/quotes/random'
 
@@ -18,7 +18,7 @@ function WorkoutLibraryHeader({ onClearPlan }) {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
 
-  const loadQuote = useCallback(() => {
+  function loadQuote() {
     setIsLoading(true)
     setError('')
 
@@ -33,11 +33,33 @@ function WorkoutLibraryHeader({ onClearPlan }) {
       .finally(() => {
         setIsLoading(false)
       })
-  }, [])
+  }
 
   useEffect(() => {
-    loadQuote()
-  }, [loadQuote])
+    let shouldUpdate = true
+
+    fetchQuote()
+      .then((data) => {
+        if (!shouldUpdate) return
+
+        setQuote(data.quote)
+        setAuthor(data.author)
+      })
+      .catch(() => {
+        if (!shouldUpdate) return
+
+        setError('Could not load quote.')
+      })
+      .finally(() => {
+        if (!shouldUpdate) return
+
+        setIsLoading(false)
+      })
+
+    return () => {
+      shouldUpdate = false
+    }
+  }, [])
 
   return (
     <header className="app-header">
@@ -69,7 +91,7 @@ function WorkoutLibraryHeader({ onClearPlan }) {
             onClick={loadQuote}
             type="button"
           >
-            {isLoading ? 'Loading...' : 'Get q new quote'}
+            {isLoading ? 'Loading...' : 'Get new quote'}
           </button>
         </div>
       </div>
