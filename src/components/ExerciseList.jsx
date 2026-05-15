@@ -6,13 +6,12 @@ function ExerciseList({ exercises, onToggleExercise, selectedIds, totalExercises
       <p className="result-count">
         Showing {exercises.length} of {totalExercises} exercises
       </p>
-
       <div className="exercise-list">
         {exercises.map((exercise) => (
           <ExerciseCard
+            key={exercise.id}
             exercise={exercise}
             isSelected={selectedIds.includes(exercise.id)}
-            key={exercise.id}
             onToggleExercise={onToggleExercise}
           />
         ))}

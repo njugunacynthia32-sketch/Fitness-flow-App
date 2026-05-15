@@ -29,8 +29,8 @@ function WorkoutPlan({
 
   return (
     <aside className="plan-box">
-      <p className="small-heading">Today</p>
-      <h1 className="small-heading">{today}</h1>
+      <blockquote className="small-heading">Today</blockquote>
+      <blockquote><strong>{today}</strong></blockquote>
       <h1 className="small-heading1">{getPlanTitle(exercises)}</h1>
 
       <div className="plan-stats">

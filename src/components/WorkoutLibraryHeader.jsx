@@ -1,6 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-const quoteUrlApi = 'https://dummyjson.com/quotes/random'
+const quoteApiUrl = 'https://dummyjson.com/quotes/random'
+
+async function fetchQuote() {
+  const response = await fetch(quoteApiUrl)
+
+  if (!response.ok) {
+    throw new Error('Could not load quote.')
+  }
+
+  return response.json()
+}
 
 function WorkoutLibraryHeader({ onClearPlan }) {
   const [quote, setQuote] = useState('')
@@ -8,9 +18,11 @@ function WorkoutLibraryHeader({ onClearPlan }) {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    fetch(quoteUrlApi)
-      .then((response) => response.json())
+  const loadQuote = useCallback(() => {
+    setIsLoading(true)
+    setError('')
+
+    fetchQuote()
       .then((data) => {
         setQuote(data.quote)
         setAuthor(data.author)
@@ -23,23 +35,9 @@ function WorkoutLibraryHeader({ onClearPlan }) {
       })
   }, [])
 
-  function loadNewQuote() {
-    setIsLoading(true)
-    setError('')
-
-    fetch(quoteUrlApi)
-      .then((response) => response.json())
-      .then((data) => {
-        setQuote(data.quote)
-        setAuthor(data.author)
-      })
-      .catch(() => {
-        setError('Could not load quote.')
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-  }
+  useEffect(() => {
+    loadQuote()
+  }, [loadQuote])
 
   return (
     <header className="app-header">
@@ -68,10 +66,10 @@ function WorkoutLibraryHeader({ onClearPlan }) {
           <button
             className="secondary-button"
             disabled={isLoading}
-            onClick={loadNewQuote}
+            onClick={loadQuote}
             type="button"
           >
-            {isLoading ? 'Loading' : 'Get youre New quote'}
+            {isLoading ? 'Loading...' : 'Get q new quote'}
           </button>
         </div>
       </div>
