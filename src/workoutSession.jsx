@@ -36,29 +36,6 @@ function WorkoutSession() {
   const previousExercise = plan[currentIndex - 1]
   const nextExercise = plan[currentIndex + 1]
 
-  useEffect(() => {
-    if (!isRunning || !currentExercise) return
-
-    const timer = setInterval(() => {
-      if (secondsLeft > 1) {
-        setSecondsLeft(secondsLeft - 1)
-        return
-      }
-
-      if (currentIndex < plan.length - 1) {
-        const nextIndex = currentIndex + 1
-        setCurrentIndex(nextIndex)
-        setSecondsLeft(plan[nextIndex].minutes * 60)
-        return
-      }
-
-      setIsRunning(false)
-      setSecondsLeft(0)
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [currentExercise, currentIndex, isRunning, plan, secondsLeft])
-
   function moveToExercise(index) {
     const exercise = plan[index]
 
@@ -74,6 +51,33 @@ function WorkoutSession() {
     setIsRunning(false)
     setSecondsLeft(currentExercise.minutes * 60)
   }
+
+  function playOrPause() {
+    setIsRunning(!isRunning)
+  }
+
+  useEffect(() => {
+    if (!isRunning || !currentExercise) return
+
+    const timer = setTimeout(() => {
+      if (secondsLeft > 1) {
+        setSecondsLeft(secondsLeft - 1)
+        return
+      }
+
+      if (nextExercise) {
+        const nextIndex = currentIndex + 1
+        setCurrentIndex(nextIndex)
+        setSecondsLeft(nextExercise.minutes * 60)
+        return
+      }
+
+      setIsRunning(false)
+      setSecondsLeft(0)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [isRunning, currentExercise, secondsLeft, nextExercise, currentIndex])
 
   if (!currentExercise) {
     return (
@@ -110,7 +114,7 @@ function WorkoutSession() {
         <div className="timer-actions">
           <button
             className="primary-button"
-            onClick={() => setIsRunning(!isRunning)}
+            onClick={playOrPause}
             type="button"
           >
             {isRunning ? 'Pause' : 'Start'}
@@ -142,11 +146,11 @@ function WorkoutSession() {
         <div className="session-preview">
           <div>
             <span>Previous</span>
-            <strong>{previousExercise ? previousExercise.name : 'None'}</strong>
+            <strong>{previousExercise ? previousExercise.name : 'Nothing here :)'}</strong>
           </div>
           <div>
             <span>Next</span>
-            <strong>{nextExercise ? nextExercise.name : 'None'}</strong>
+            <strong>{nextExercise ? nextExercise.name : 'Nothing here :)'}</strong>
           </div>
         </div>
 
